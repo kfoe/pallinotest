@@ -1,0 +1,31 @@
+{
+  "$schema": "https://infection.github.io/infection/json-schema/infection.json",
+  "source": {
+    "directories": [
+      "app/Console/Commands",
+      "app/Downloader",
+      "app/Http/Controllers/Api",
+      "app/Http/Resources",
+      "app/Importer",
+      "app/Models",
+      "app/Repositories",
+      "app/Services"
+    ],
+    "excludes": [
+      "vendor"
+    ]
+  },
+  "logs": {
+    "text": "infection-log.txt",
+    "html": "infection-log.html",
+    "summary": "infection-summary.log"
+  },
+  "mutators": {
+    "@default": true
+  },
+  "timeout": 10,
+  "phpUnit": {
+    "configDir": "",
+    "customPath": "./vendor/bin/phpunit"
+  }
+}

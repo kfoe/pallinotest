@@ -1,0 +1,57 @@
+
+openapi: 3.0.3
+info:
+  title: Offer
+  version: '1.0.0'
+paths: {}
+components:
+  schemas:
+    Offer:
+      type: object
+      properties:
+        id:
+          type: integer
+        shop_id:
+          type: integer
+        product:
+          type: string
+        price:
+          type: number
+          format: float
+        currency:
+          type: string
+        description:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+          example: "2024-10-11T17:37:05+00:00"
+        updated_at:
+          type: string
+          format: date-time
+          example: "2024-10-11T17:37:05+00:00"
+    OfferWithShop:
+      type: object
+      properties:
+        id:
+          type: integer
+        product:
+          type: string
+        price:
+          type: number
+          format: float
+        currency:
+          type: string
+        description:
+          type: string
+        shop:
+          type: object
+          $ref: './shop.yaml#/components/schemas/Shop'
+        created_at:
+          type: string
+          format: date-time
+          example: "2024-10-11T17:37:05+00:00"
+        updated_at:
+          type: string
+          format: date-time
+          example: "2024-10-11T17:37:05+00:00"
