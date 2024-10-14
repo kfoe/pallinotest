@@ -1,0 +1,25 @@
+includes:
+  - ./vendor/larastan/larastan/extension.neon
+  - ./vendor/phpstan/phpstan-mockery/extension.neon
+  - ./vendor/phpstan/phpstan-phpunit/extension.neon
+  - ./vendor/phpstan/phpstan-phpunit/rules.neon
+  - ./phpstan-baseline.php
+
+parameters:
+    paths:
+        - app
+        - tests
+    level: 6
+    checkMissingVarTagTypehint: false
+    inferPrivatePropertyTypeFromConstructor: true
+    checkUninitializedProperties: true
+    checkMissingTypehints: true
+    ignoreErrors:
+        - identifier: missingType.iterableValue
+        - identifier: missingType.generics
+        - '#^Call to an undefined method Illuminate\[a-zA-Z]+\[a-zA-Z]+\::[a-zA-Z]+\(\)#'
+        - '#^Property [^ ]+ does not accept Illuminate\[a-zA-Z]+\[a-zA-Z]+\|null\.$#'
+        - '#^Access to an undefined property [a-zA-Z]+\$[a-zA-Z]+\.$#'
+    reportUnmatchedIgnoredErrors: false
+    parallel:
+        maximumNumberOfProcesses: 1

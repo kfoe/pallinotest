@@ -1,0 +1,179 @@
+openapi: 3.0.3
+info:
+  title: Offers API V1
+  version: '1.0.0'
+
+servers:
+  - url: http://localhost:8081/api/v1
+
+paths:
+  /offers/{shopId}:
+    get:
+      summary: Get a list of offers from shop order by asc price
+      parameters:
+        - name: shopId
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: perPage
+          in: query
+          schema:
+            type: integer
+        - name: page
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: './../models/offer.yaml#/components/schemas/Offer'
+                  links:
+                    type: object
+                    properties:
+                      first:
+                        type: string
+                        example: "http://localhost:8080/api/v1/offers/10?page=1"
+                      last:
+                        type: string
+                        example: "http://localhost:8080/api/v1/offers/10?page=1"
+                      prev:
+                        type: string
+                        nullable: true
+                        example: null
+                      next:
+                        type: string
+                        nullable: true
+                        example: null
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: integer
+                        example: 1
+                      from:
+                        type: integer
+                        example: 1
+                      last_page:
+                        type: integer
+                        example: 1
+                      links:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            url:
+                              type: string
+                              nullable: true
+                              example: null
+                            label:
+                              type: string
+                              example: "&laquo; Previous"
+                            active:
+                              type: boolean
+                              example: false
+                      path:
+                        type: string
+                        example: "http://localhost:8080/api/v1/offers/10"
+                      per_page:
+                        type: integer
+                        example: 15
+                      to:
+                        type: integer
+                        example: 3
+                      total:
+                        type: integer
+                        example: 3
+  /offers/{countryCode}:
+    get:
+      summary: Get a list of offers with related shop from country code
+      parameters:
+        - name: countryCode
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: perPage
+          in: query
+          schema:
+            type: integer
+        - name: page
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: './../models/offer.yaml#/components/schemas/OfferWithShop'
+                  links:
+                    type: object
+                    properties:
+                      first:
+                        type: string
+                        example: "http://localhost:8080/api/v1/offers/10?page=1"
+                      last:
+                        type: string
+                        example: "http://localhost:8080/api/v1/offers/10?page=1"
+                      prev:
+                        type: string
+                        nullable: true
+                        example: null
+                      next:
+                        type: string
+                        nullable: true
+                        example: null
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: integer
+                        example: 1
+                      from:
+                        type: integer
+                        example: 1
+                      last_page:
+                        type: integer
+                        example: 1
+                      links:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            url:
+                              type: string
+                              nullable: true
+                              example: null
+                            label:
+                              type: string
+                              example: "&laquo; Previous"
+                            active:
+                              type: boolean
+                              example: false
+                      path:
+                        type: string
+                        example: "http://localhost:8080/api/v1/offers/10"
+                      per_page:
+                        type: integer
+                        example: 15
+                      to:
+                        type: integer
+                        example: 3
+                      total:
+                        type: integer
+                        example: 3

@@ -1,0 +1,79 @@
+{
+	"info": {
+		"_postman_id": "f1ed68d0-855a-4a23-b46e-f1b3dbe0b70a",
+		"name": "Pallino test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20505959"
+	},
+	"item": [
+		{
+			"name": "Get a list of offers from shop order by asc price",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URI}}/api/v1/offers/10",
+					"host": [
+						"{{BASE_URI}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"offers",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a list of offers with related shop from country code",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URI}}/api/v1/offers/BR",
+					"host": [
+						"{{BASE_URI}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"offers",
+						"BR"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URI",
+			"value": "http://localhost:8081",
+			"type": "string"
+		}
+	]
+}
